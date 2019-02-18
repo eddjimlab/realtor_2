@@ -1,0 +1,213 @@
+* {
+    /* --main-font: 'Poppins', sans-serif; */
+    --main-font: 'Montserrat', sans-serif;
+    --back-colorBlue: #23425c !important;
+    --back-colorWhite: white;
+    --back-colorGrey: rgb(248, 248, 250);
+    --back-colorGrey3: rgb(238, 238, 240);
+
+    --font-colorWhite: white;
+    --font-colorBlack: black;
+    --font-colorBlue: rgb(73, 170, 244);
+
+    --border-colorGrey: rgb(235, 235, 235);
+    --border-colorBlue: rgb(184, 224, 254);
+
+    font-family: var(--main-font);
+
+
+}
+
+
+.navbar-custom {
+    background-color: #23425c !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+
+
+}
+
+
+body,
+a {
+    color: var(--font-colorWhite);
+    background: var(--back-colorBlue);
+    text-align: right !important;
+
+}
+
+
+
+/* navbar */
+#mainNavbar {
+    height: 4rem;
+
+}
+
+.navbar-custom.scrolled,
+.scrolled a {
+    background-color: white !important;
+    color: var(--font-colorBlack);
+    position: sticky;
+    top: 0;
+    transition: background 1s;
+    z-index: 1;
+
+}
+
+/* navBar hover */
+.navbar-custom a:hover {
+    color: var(--font-colorBlue);
+    transition: color .5s;
+}
+
+.navbar-custom a:hover::first-letter {
+    text-decoration: underline;
+    transition: color .5s;
+}
+
+/* navabar */
+
+
+/* firstBlock*/
+h2 {
+    font-weight: 100;
+    font-size: 2.5rem;
+    color: var(--font-colorWhite);
+    margin-top: auto;
+}
+
+.contentFirst {
+    text-align: center;
+    padding-top: 15%;
+}
+
+.contentSecond {
+    text-align: center;
+    padding-top: 10%;
+}
+
+.contentThird {
+    text-align: center;
+    padding-top: 10%;
+}
+
+.headBlue {
+    color: var(--font-colorBlue);
+}
+
+p {
+    font-size: 0.8rem;
+
+    letter-spacing: .3rem;
+    word-spacing: 1rem;
+    text-transform: uppercase;
+}
+
+.first-block {
+    height: 30rem;
+
+}
+
+/* secondBlock */
+.contentTextLight {
+    text-align: center;
+    padding-top: 15%;
+}
+
+.second-block {
+    height: 30rem;
+    background: var(--back-colorGrey);
+}
+
+.third-block {
+    height: 30rem;
+    background: var(--back-colorGrey3);
+}
+
+.fas {
+    color: var(--font-colorBlue);
+    font-size: 2rem;
+    text-align: center;
+    height: 4rem;
+}
+
+.circle {
+    display: block;
+    height: 6rem;
+    width: 6rem;
+    border: 2px solid var(--border-colorGrey);
+    box-shadow: 2px 2px 2px var(--border-colorGrey);
+    border-radius: 50%;
+    position: relative;
+    bottom: 4rem;
+}
+
+.contentTextLight:hover .circle {
+
+    border: 2px solid var(--border-colorBlue);
+    box-shadow: 1px 1px 1px var(--border-colorBlue);
+    transition: transform .5s;
+}
+
+.contentTextLight:hover .fas {
+    -ms-transform: scale(1.2, 1.2);
+    /* IE 9 */
+    -webkit-transform: scale(1.2, 1.2);
+    /* Safari */
+    transform: scale(1.2, 1.2);
+
+    transition: transform .5s;
+}
+
+.textDarkP {
+    color: var(--font-colorBlack);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: .2rem;
+    word-spacing: 1rem;
+    margin-top: 1rem;
+}
+
+.contentTextLight:hover .textDarkP {
+    color: var(--font-colorBlue);
+    transition: color .5s;
+}
+
+.textDarkH {
+    color: var(--font-colorBlack);
+    text-align: center;
+    /* letter-spacing: .5rem; */
+    word-spacing: 1.5rem;
+}
+
+.textDarkPThing {
+    color: var(--font-colorBlack);
+    text-align: center;
+    letter-spacing: .5rem;
+    word-spacing: 1.5rem;
+}
+
+/* fontResponsive */
+@media(max-width: 414px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+        letter-spacing: 0.1rem;
+        word-spacing: 0.1rem;
+    }
+}
+
+/* remove blue border toggle icon */
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* remove blue border toggle icon */
+
+/* textBlock */
