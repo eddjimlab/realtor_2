@@ -36,6 +36,17 @@ a {
 
 }
 
+.navbar-brand img {
+    margin-left: 4rem;
+    width: 6rem;
+    height: 3rem;
+    filter: brightness(2);
+}
+
+.scrolled img {
+    filter: brightness(0.5);
+}
+
 
 
 /* navbar */
@@ -105,7 +116,7 @@ p {
 }
 
 .first-block {
-    height: 30rem;
+    padding-bottom: 15rem;
 
 }
 
@@ -116,13 +127,17 @@ p {
 }
 
 .second-block {
-    height: 30rem;
     background: var(--back-colorGrey);
+    padding-bottom: 10rem;
 }
 
 .third-block {
-    height: 30rem;
     background: var(--back-colorGrey3);
+    padding-bottom: 5rem;
+}
+
+[class*="col-md"] {
+    margin-bottom: 30px;
 }
 
 .fas {
@@ -211,3 +226,40 @@ p {
 /* remove blue border toggle icon */
 
 /* textBlock */
+
+/* Card */
+.card {
+    /* width: 100%; */
+    color: var(--font-colorBlack);
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.card-text {
+    letter-spacing: 0;
+    word-spacing: 0.2rem;
+}
+
+.card-img-top {
+    height: 11rem;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    -moz-transition: all .4s ease-out;
+    -o-transition: all .4s ease-out;
+    -webkit-transition: all .4s ease-out;
+}
+
+
+
+.card:hover .card-img-top {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.card:hover .card-title {
+    color: var(--font-colorBlue);
+}
