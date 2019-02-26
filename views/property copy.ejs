@@ -1,0 +1,126 @@
+<% include partials/header %>
+<!-- SecondBlock -->
+<div class="row second-block">
+    <!-- Header -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-lg-10">
+                <div class="contentSecond">
+                    <h2 class="textDarkH">
+                        3 комнатная квартира, 84 м2, 7 этаж, дом 7 этажей
+                    </h2>
+                    <p class="textDarkPThing">
+                        Клиенты доверяют нам
+                    </p>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <!-- Photo Main onmouseover-->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <!-- The expanding image container -->
+                    <div class="containerImage">
+                        <!-- Close the image -->
+                        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+
+                        <!-- Expanded image -->
+                        <img id="expandedImg" style="width:100%">
+
+                        <!-- Image text -->
+                        <div id="imgtext"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The grid: four columns -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="row rowImage">
+                        <div class="col columnImage justify-content-left">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                        <div class="col columnImage">
+                            <img src="/imgProperty/IMG_2544.jpg" alt="MY HOME gold Team Realtor" onmouseover="myFunction(this);">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Photo -->
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="table-responsive-md">
+                    <table class="table tableProperty">
+                        <tbody>
+                            <tr>
+                                <td>Площадь кухни: </td>
+                                <td class="boldProp">22 м2</td>
+                                <td>Тип дома: </td>
+                                <td class="boldProp">Панельный</td>
+                            </tr>
+                            <tr>
+                                <td>Жилая площадь: </td>
+                                <td class="boldProp">44 м2</td>
+                                <td>Количество комнат: </td>
+                                <td class="boldProp">3 комнаты</td>
+                            </tr>
+                            <tr>
+                                <td>Этаж: </td>
+                                <td class="boldProp">7</td>
+                                <td>Общая площадь: </td>
+                                <td class="boldProp">84 м2</td>
+                            </tr>
+                            <tr>
+                                <td>Адрес: </td>
+                                <td class="boldProp">Сантк Петербург, улица Ленсовета д.10</td>
+                                <td>Метро: </td>
+                                <td class="boldProp">Парк Победы</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Header -->
+
+</div>
+<!-- SecondBlock -->
+
+
+<% include partials/footer %>
