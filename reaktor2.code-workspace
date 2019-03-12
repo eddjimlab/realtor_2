@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "/Volumes/OLD disk/Users/jimlab/My_sites/Realtor"
+		},
+		{
+			"path": "/Volumes/OLD disk/Users/jimlab/My_sites/sass_compass/sass-test"
+		},
+		{
+			"path": "/Volumes/OLD disk/Users/jimlab/My_sites/Cloudinary_photo/cloudinary_npm"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "sass-test"
+	}
+}

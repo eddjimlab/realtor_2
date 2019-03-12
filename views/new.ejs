@@ -1,0 +1,112 @@
+<% include partials/header %>
+
+
+
+<div class="row">
+    <div class="container">
+        <h2>
+            Добавить новый объект
+        </h2>
+        <form action="/propertyAll" method="POST">
+            <div class="form-group row">
+                <label for="kitchen_S" class="col-md-2 text-right col-form-label">Площадь кухни</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="kitchen_S" name="kitchen_S" placeholder="22">
+                </div>
+                <label for="construction" class="col-md-2 text-right col-form-label">Тип дома</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="construction" name="construction" placeholder="Панельный">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="living_S" class="col-md-2 text-right col-form-label">Жилая площадь</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="living_S" name="living_S" placeholder="44">
+                </div>
+                <label for="rooms" class="col-md-2 text-right col-form-label">Количество комнат</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="rooms" name="rooms" placeholder="3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="floor" class="col-md-2 text-right col-form-label">Этаж</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="floor" name="floor" placeholder="7">
+                </div>
+                <label for="property_S" class="col-md-2 text-right col-form-label">Общая площадь</label>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="property_S" name="property_S" placeholder="44">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="address" class="col-md-2 text-right col-form-label">Адрес</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Санкт Петербург, улица Ленсовета д.10">
+                </div>
+                <label for="metro" class="col-md-2 text-right col-form-label">Метро</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="metro" name="metro" placeholder="Парк Победы">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="mainHeader" class="col-md-2 text-right col-form-label">Название</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="mainHeader" name="mainHeader" placeholder="3 комнатная квартира, 84 м2, 7 этаж, дом 7 этажей">
+                </div>
+
+                <label for="img" class="col-md-2 text-right col-form-label">Фото</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="img" name="img" placeholder="img">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-md-2 text-right col-form-label">Цена</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="price" name="price"  placeholder="12 000 000">
+                </div>
+                <label for="price" class="col-md-2 text-right col-form-label">Загрузка</label>
+
+                <div class="col-md-4">
+                <div id="drop-area">
+                    <form class="my-form">
+                        <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+                        <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+                        <label class="button" for="fileElem">Select some files</label>
+                    </form>
+                    <progress id="progress-bar" max=100 value=0></progress>
+                    <input class="btn btn-outline-danger" type="submit" value="Отправить">
+
+                    <div id="gallery" /></div>
+                </div>
+
+                </div>
+            </div>
+            <div class="form-group row text-right">
+                <div class="col">
+                <form action="/uploads" method="post" enctype="multipart/form-data">
+            <input type="file" name="avatar" />
+            <input class="btn btn-outline-danger" type="submit" value="Отправить">
+
+            </form>
+                    <input class="btn btn-outline-danger" type="submit" value="Отправить">
+                </div>
+
+
+
+            </div>
+        </form>
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<% include partials/footer %>

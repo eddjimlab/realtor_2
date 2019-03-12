@@ -7,7 +7,7 @@
     --back-colorGrey3: rgb(238, 238, 240);
 
     --font-colorWhite: white;
-    --font-colorBlack: black;
+    --font-colorBlack: #485e74;
     --font-colorBlue: rgb(73, 170, 244);
     --font-colorGrey: rgb(177, 177, 177);
 
@@ -58,18 +58,21 @@ body,
 }
 
 .navbar-custom.scrolled,
-.scrolled a {
+.scrolled a,
+.AllPropLinks a {
     background-color: white !important;
     color: var(--font-colorBlack);
     position: sticky;
     top: 0;
     transition: background 1s;
     z-index: 1;
+    text-decoration: none;
 
 }
 
 /* navBar hover */
-.navbar-custom a:hover {
+.navbar-custom a:hover,
+.AllPropLinks a:hover {
     color: var(--font-colorBlue);
     transition: color .5s;
 }
@@ -141,7 +144,7 @@ h2 {
     margin-bottom: 30px;
 }
 
-.fas {
+.contentTextLight .fas {
     color: var(--font-colorBlue);
     font-size: 2rem;
     text-align: center;
@@ -243,7 +246,7 @@ h2 {
     word-spacing: 0.2rem;
 }
 
-.card-img-top {
+.card-img-top-home {
     height: 11rem;
     width: 100%;
     overflow: hidden;
@@ -255,13 +258,13 @@ h2 {
 
 
 
-.card:hover .card-img-top {
+.card:hover .card-img-top-home {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
 }
 
-.card:hover .card-title {
+.card:hover .card-title-home {
     color: var(--font-colorBlue);
 }
 

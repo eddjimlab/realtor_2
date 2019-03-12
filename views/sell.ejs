@@ -1,0 +1,53 @@
+<% include partials/header %>
+
+
+<div class="form container">
+    <h1 class="brand"><span><%=msg%></span> недвижимость эффективно</h1>
+    <div class="wrapper animated bounceInLeft">
+      <div class="company-info">
+        <h3>Контакты</h3>
+        <ul>
+          <li><i class="fa fa-road"></i> Санкт Петербург,<br> Невский проспект 100</li>
+          <li><i class="fa fa-phone"></i> 8(921) 634-88-20</li>
+          <li><i class="fa fa-envelope"></i> jimlab@mail.ru</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Ваши контактные данные</h3>
+      
+        <form method="POST" action="sell">
+          <p>
+            <label>Имя</label>
+            <input type="text" name="name">
+          </p>
+          <p>
+            <label>Фамилия</label>
+            <input type="text" name="company">
+          </p>
+          <p>
+            <label>Почта / Email </label>
+            <input type="email" name="email">
+          </p>
+          <p>
+            <label>Телефон</label>
+            <input type="text" name="phone">
+          </p>
+          <p class="full">
+            <label>Ваше сообщение:</label>
+            <textarea name="message" rows="5" pattern="[А-Яа-яЁё ]+"></textarea>
+          </p>
+          <p class="full">
+            <button type="submit">Отправить</button>
+          <p class="full">Нажимая «Отправить» 
+            вы соглашаетесь на обработку 
+            персональных данных в соответствии с нашим «Пользовательским соглашением»</p>
+          </p>           
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<% include partials/footer %>
