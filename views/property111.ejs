@@ -4,7 +4,6 @@
     <!-- Header -->
     <div class="container">
 
-
         <div class="row">
             <div class="col">
 
@@ -24,6 +23,7 @@
 
         <!-- Image Property Slider -->
         <div class="container">
+        <% property.forEach(function(property){ %>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <!-- Container for the image gallery -->
@@ -31,52 +31,37 @@
                         <h4>MY HOME gold Team realtor</h4>
 
                         <!-- Full-width images with number text -->
+                         
                         <div class="mySlides">
-                            <div class="numbertext">1 / 10</div>
+                            <div class="numbertext">1 / 6</div>
                             <img src="<%= property.img1 %>" style="width:100%">
                         </div>
 
                         <div class="mySlides">
-                            <div class="numbertext">2 / 10</div>
+                            <div class="numbertext">2 / 6</div>
                             <img src="<%= property.img2 %>" style="width:100%">
                         </div>
 
                         <div class="mySlides">
-                            <div class="numbertext">3 / 10</div>
-                            <img src="<%= property.img3 %>" style="width:100%">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="/imgProperty/IMG_2549.jpg" style="width:100%">
                         </div>
 
                         <div class="mySlides">
-                            <div class="numbertext">4 / 10</div>
-                            <img src="<%= property.img4 %>" style="width:100%">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="/imgProperty/IMG_2550.jpg" style="width:100%">
                         </div>
 
                         <div class="mySlides">
-                            <div class="numbertext">5 / 10</div>
-                            <img src="<%= property.img5 %>" style="width:100%">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="/imgProperty/IMG_2544.jpg" style="width:100%">
                         </div>
 
                         <div class="mySlides">
-                            <div class="numbertext">6 / 10</div>
-                            <img src="<%= property.img6 %>" style="width:100%">
+                            <div class="numbertext">6 / 6</div>
+                            <img src="/imgProperty/IMG_2544.jpg" style="width:100%">
                         </div>
-                        <div class="mySlides">
-                            <div class="numbertext">7 / 10</div>
-                            <img src="<%= property.img7 %>" style="width:100%">
-                        </div>
-                        <div class="mySlides">
-                            <div class="numbertext">8 / 10</div>
-                            <img src="<%= property.img8 %>" style="width:100%">
-                        </div>
-                        <div class="mySlides">
-                            <div class="numbertext">9 / 10</div>
-                            <img src="<%= property.img9 %>" style="width:100%">
-                        </div>
-                        <div class="mySlides">
-                            <div class="numbertext">10 / 10</div>
-                            <img src="<%= property.img10 %>" style="width:100%">
-                        </div>
-
+ 
 
                         <!-- Next and previous buttons -->
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -90,51 +75,37 @@
                         <!-- Thumbnail images -->
                         <div class="rowProp">
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img1 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2544.jpg" style="width:100%"
                                     onmouseenter="currentSlide(1)" alt="MY HOME gold Team realtor">
                             </div>
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img2 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2548.jpg" style="width:100%"
                                     onmouseenter="currentSlide(2)" alt="MY HOME gold Team realtor">
                             </div>
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img3 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2549.jpg" style="width:100%"
                                     onmouseenter="currentSlide(3)" alt="MY HOME gold Team realtor">
                             </div>
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img4 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2550.jpg" style="width:100%"
                                     onmouseenter="currentSlide(4)" alt="MY HOME gold Team realtor">
                             </div>
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img5 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2544.jpg" style="width:100%"
                                     onmouseenter="currentSlide(5)" alt="MY HOME gold Team realtor">
                             </div>
                             <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img6 %>" style="width:100%"
+                                <img class="demo cursor" src="/imgProperty/IMG_2544.jpg" style="width:100%"
                                     onmouseenter="currentSlide(6)" alt="MY HOME gold Team realtor">
-                            </div>
-                            <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img7 %>" style="width:100%"
-                                    onmouseenter="currentSlide(7)" alt="MY HOME gold Team realtor">
-                            </div>
-                            <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img8 %>" style="width:100%"
-                                    onmouseenter="currentSlide(8)" alt="MY HOME gold Team realtor">
-                            </div>
-                            <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img9 %>" style="width:100%"
-                                    onmouseenter="currentSlide(9)" alt="MY HOME gold Team realtor">
-                            </div>
-                            <div class="columnProp">
-                                <img class="demo cursor" src="<%= property.img10 %>" style="width:100%"
-                                    onmouseenter="currentSlide(10)" alt="MY HOME gold Team realtor">
                             </div>
 
 
                         </div>
                     </div>
                 </div>
-            </div>
+           
+                </div>
+                 <% }); %>
         </div>
         <!-- Image Property Slider -->
 
@@ -181,25 +152,8 @@
                                     <%= property.metro %>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Цена: </td>
-                                <td class="boldProp">
-                                    <%= property.price %>
-                                </td>
-                                <td>Описание: </td>
-                                <td class="boldProp">
-                                    <%= property.mainHeader %>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Описание: </td>
-                                <td colspan="3" class="boldProp">
-                                    <%= property.description %>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                    <hr>
                 </div>
 
             </div>
@@ -208,32 +162,22 @@
         <!-- Maps Property -->
         <!-- Maps Property -->
 
-        <!-- Bottons Edit Delete New -->
+        <!-- Text Description -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row text-right mt-2">
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large" href="/propertyAll/new">Добавить
-                                объект
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large"
-                                href="/propertyAll/<%= property._id %>/edit">Редактировать
-                                объект
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large" href="/propertyAll/new">Удалить
-                                объект
-                            </a>
-                        </div>
-                    </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 textProperty">
+                    <hr>
+                    <p>
+                        <%= property.description %>
+                    </p>
+                    <hr>
                 </div>
+
             </div>
         </div>
-        <!-- Bottons Edit Delete New -->
+
+       
+        <!-- Text Description -->
 
     </div>
 

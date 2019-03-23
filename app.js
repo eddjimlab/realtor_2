@@ -2,13 +2,11 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    jquery = require('jquery'),
-    // exphbs = require('express-handlebars'),
-    // path = require('path'),
+    methodOverride = require("method-override"),
+    multer = require("multer"),
+    path = require("path"),
     nodemailer = require('nodemailer')
-// multer = require("multer"),
 // cloudinary = require("cloudinary"),
-// upload = multer({ dest: 'uploads/' }),
 // cloudinaryStorage = require("multer-storage-cloudinary"),
 // fileUpload = require('express-fileupload')
 
@@ -20,20 +18,28 @@ mongoose.connect('mongodb://localhost/property', { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(express.static("views"));
 app.use(express.static("public"));
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); //может надо удалить
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 
-// View engine setup
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'handlebars');
+
 
 
 // Property Schema
 var propertySchema = new mongoose.Schema({
     mainHeader: String,
-    img: String,
+    img1: String,
+    img2: String,
+    img3: String,
+    img4: String,
+    img5: String,
+    img6: String,
+    img7: String,
+    img8: String,
+    img9: String,
+    img10: String,
     kitchen_S: Number,
     living_S: Number,
     floor: Number,
@@ -117,10 +123,11 @@ app.post('/sell', (req, res) => {
 //Show Sell form
 
 
-
+//Show About
 app.get("/about", function (req, res) {
     res.render("about");
 });
+
 
 // Property - show all properties
 app.get("/propertyAll", function (req, res) {
@@ -134,17 +141,7 @@ app.get("/propertyAll", function (req, res) {
     });
 
 });
-// app.get("/property", function (req, res) {
-//     Property.find({}, function (err, allProperty) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render("property", { property: allProperty });
-//         }
 
-//     });
-
-// });
 
 // CREATE add new properties to the DB
 
@@ -160,7 +157,16 @@ app.post("/propertyAll", function (req, res) {
     var metro = req.body.metro;
     var map = req.body.map;
     var description = req.body.description;
-    var img = req.body.img;
+    var img1 = req.body.img1;
+    var img2 = req.body.img2;
+    var img3 = req.body.img3;
+    var img4 = req.body.img4;
+    var img5 = req.body.img5;
+    var img6 = req.body.img6;
+    var img7 = req.body.img7;
+    var img8 = req.body.img8;
+    var img9 = req.body.img9;
+    var img10 = req.body.img10;
     var price = req.body.price;
     var newProperty = {
         mainHeader: mainHeader,
@@ -174,7 +180,16 @@ app.post("/propertyAll", function (req, res) {
         metro: metro,
         map: map,
         description: description,
-        img: img,
+        img1: img1,
+        img2: img2,
+        img3: img3,
+        img4: img4,
+        img5: img5,
+        img6: img6,
+        img7: img7,
+        img8: img8,
+        img9: img9,
+        img10: img10,
         price: price
     }
     Property.create(newProperty, function (err, newluProp) {
@@ -205,85 +220,124 @@ app.get("/propertyAll/:id", function (req, res) {
 });
 // SHOW property
 
-//File uploader
-// cloudinary.config({
-//     cloud_name: process.env.CLOUD_NAME,
-//     api_key: process.env.API_KEY,
-//     api_secret: process.env.API_SECRET
-// });
-// const storage = cloudinaryStorage({
-//     cloudinary: cloudinary,
-//     folder: "demo",
-//     allowedFormats: ["jpg", "png"],
-//     transformation: [{ width: 500, height: 500, crop: "limit" }]
-// });
-// const parser = multer({ storage: storage });
-
-// app.post('/api/images', parser.single("image"), (req, res) => {
-//     console.log(req.file) // to see what is returned to you
-//     const image = {};
-//     image.url = req.file.url;
-//     image.id = req.file.public_id;
-//     Image.create(image) // save image information in database
-//         .then(newImage => res.json(newImage))
-//         .catch(err => console.log(err));
-// });
-
-
-//File uploader
-
-
-
-// 
-// default options
-// app.use(fileUpload());
-
-// app.post('/upload', function (req, res) {
-//     if (Object.keys(req.files).length == 0) {
-//         return res.status(400).send('No files were uploaded.');
-//     }
-
-//     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-//     let sampleFile = req.files.sampleFile;
-
-//     // Use the mv() method to place the file somewhere on your server
-//     sampleFile.mv('./upload', function (err) {
-//         if (err)
-//             return res.status(500).send(err);
-
-//         res.send('File uploaded!');
-//     });
-// });
-// 
-
-
-//
-
-
-// app.post('/uploads', upload.single('avatar'), function (req, res, next) {
-//     // req.file - файл `avatar`
-//     // req.body сохранит текстовые поля, если они будут
-// })
-
-// app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
-//     // req.files - массив файлов `photos`
-//     // req.body сохранит текстовые поля, если они будут
-// })
-
-// var cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
-// app.post('/cool-profile', cpUpload, function (req, res, next) {
-//     // req.files - объект (String -> Array), где fieldname - ключ, и значение - массив файлов
-//     //
-//     // например:
-//     //  req.files['avatar'][0] -> File
-//     //  req.files['gallery'] -> Array
-//     //
-//     // req.body сохранит текстовые поля, если они будут
-// })
-//
-
-
-
-app.listen(3000, function () {
-    console.log("server started!!!");
+//Edit Property
+app.get("/propertyAll/:id/edit", function (req, res) {
+    Property.findById(req.params.id, function (err, foundProperty) {
+        if (err) {
+            console.log(err);
+            res.redirect("/propertyAll");
+        } else {
+            res.render("edit", { property: foundProperty });
+        }
+    });
 });
+
+app.put("/propertyAll/:id", function (req, res) {
+    Property.findByIdAndUpdate(req.params.id, req.body.property, function (err, updatedProperty) {
+        if (err) {
+            console.log(err);
+        } else {
+            let showUrl = "/propertyAll/" + req.params.id;
+            res.redirect(showUrl);
+        }
+    });
+});
+//Edit Property
+//Delete Property
+
+
+// app.delete("/propertyAll/:id", function (req, res) {
+//     res.send("You are trying to delete something");
+// });
+
+app.delete("/propertyAll/:id", function (req, res) {
+    Property.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/propertyAll");
+        }
+    });
+});
+//Delete Property
+
+
+
+//Set storage Engine
+const storage = multer.diskStorage({
+    destination: './public/uploads',
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() +
+            path.extname(file.originalname));
+    }
+});
+
+
+//Init upload
+const upload = multer({
+    storage: storage
+    // ,
+    // limits: { fileSize: 800000 }, //800 kBites
+    // fileFilter: function (req, file, cb) {
+    //     checkFileType(file, cb);
+    // }
+}).array('myImage', 6);
+
+
+//Check file Type
+function checkFileType(file, cb) {
+    //Alowed ext
+    const filetypes = /jpeg|jpg|png|gif/;
+    //check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    //check mime
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+        return cb(null, true);
+    } else {
+        cb('Error: Images Only');
+    }
+}
+
+//Add POST route fore Image uploads
+app.post('/upload', (req, res) => {
+    upload(req, res, (err) => {
+        let filenames = req.files.map(({ filename }) => filename);
+        console.log(filenames);
+        // console.log(req.files.map(({ filename }) => filename));
+        if (err) {
+            res.render('new', {
+                msg: err
+            });
+        } else {
+            if (req.files == undefined) {
+                res.render('new', {
+                    msg: 'Error: No File Selected'
+                });
+            } else {
+                res.render('new', { filenames: filenames });
+                // res.render('new', {
+                //     msg: 'File Uploaded',
+                //     files: `uploads/${filenames}`
+                // });
+                // console.log(req.files);
+                // console.log(req.files.filename);
+                // console.log(this.filename);
+
+            }
+        }
+        console.log(filenames);
+
+
+
+    });
+});
+
+
+
+
+
+const port = 3000;
+app.listen(port, () =>
+    console.log(`server started on port: ${port}`));

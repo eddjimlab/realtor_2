@@ -2,12 +2,6 @@
 
 <div class="row second-block">
     <div class="container">
-        <div class="row text-right mt-2">
-            <div class="col">
-                <a class="btn btn-outline-secondary btn-large" href="propertyAll/new">Добавить новый объект
-                </a>
-            </div>
-        </div>
         <div class="col-lg">
             <div class="contentSecond">
                 <h2 class="textDarkH">
@@ -15,24 +9,30 @@
                 </h2>
             </div>
         </div>
-
-
-
         <div class="row justify-content-start">
             <% property.forEach(function(property){ %>
             <div class="card m-4 AllPropLinks" style="width: 20rem;">
+                <a href="/propertyAll/<%= property._id %>">
+                    <img src="<%= property.img1 %>" alt="" class="card-img-top">
 
-                <img src="<%= property.img %>" alt="" class="card-img-top">
+                </a>
                 <h5 class="card-title text-center">
-                    <%= property.price %>
+                    <%= property.price %> руб.
                 </h5>
                 <div>
                     <a href="/propertyAll/<%= property._id %>">
                         <p class="card-text text-center" style="min-height: 4rem;">
-                            <%= property.mainHeader.substring(0, 50) %> ...
+                            <%= property.mainHeader.substring(0, 50); %> ...
                         </p>
                     </a>
                 </div>
+                <div class="row AllPropLinks_buttons">
+                        <a class="btn btn-outline-warning btn-sm" href="/propertyAll/<%= property._id %>/edit">Edit </a>
+                    <form id="delete-form" action="/propertyAll/<%= property._id %>?_method=DELETE" method="POST">
+                         <button class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+                    
 
             </div>
             <% }); %>

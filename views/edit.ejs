@@ -5,116 +5,120 @@
 <div class="row">
     <div class="container">
         <h2>
-            Добавить новый объект
+            Изменить данные объекта
         </h2>
-        <form action="/propertyAll" method="POST">
+        <form action="/propertyAll/<%=property._id%>?_method=PUT" method="POST">
             <div class="form-group row">
                 <label for="kitchen_S" class="col-md-2 text-right col-form-label">Площадь кухни</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="kitchen_S" name="kitchen_S" placeholder="22">
+                    <input type="number"  value="<%=property.kitchen_S%>" class="form-control" id="kitchen_S" name="property[kitchen_S]">
                 </div>
                 <label for="construction" class="col-md-2 text-right col-form-label">Тип дома</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="construction" name="construction" placeholder="Панельный">
+                    <input type="text" value="<%=property.construction%>" class="form-control" id="construction" name="property[construction]">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="living_S" class="col-md-2 text-right col-form-label">Жилая площадь</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="living_S" name="living_S" placeholder="44">
+                    <input type="number" value="<%=property.living_S%>" class="form-control" id="living_S" name="property[living_S]">
                 </div>
                 <label for="rooms" class="col-md-2 text-right col-form-label">Количество комнат</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="rooms" name="rooms" placeholder="3">
+                    <input type="number" value="<%=property.rooms%>" class="form-control" id="rooms" name="property[rooms]">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="floor" class="col-md-2 text-right col-form-label">Этаж</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="floor" name="floor" placeholder="7">
+                    <input type="number" value="<%=property.floor%>" class="form-control" id="floor" name="property[floor]">
                 </div>
                 <label for="property_S" class="col-md-2 text-right col-form-label">Общая площадь</label>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="property_S" name="property_S" placeholder="44">
+                    <input type="number" value="<%=property.property_S%>" class="form-control" id="property_S" name="property[property_S]">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="address" class="col-md-2 text-right col-form-label">Адрес</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Санкт Петербург, улица Ленсовета д.10">
+                    <input type="text" value="<%=property.address%>" class="form-control" id="address" name="property[address]">
                 </div>
                 <label for="metro" class="col-md-2 text-right col-form-label">Метро</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="metro" name="metro" placeholder="Парк Победы">
+                    <input type="text" value="<%=property.metro%>" class="form-control" id="metro" name="property[metro]">
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="mainHeader" class="col-md-2 text-right col-form-label">Название</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="mainHeader" name="mainHeader" placeholder="3 комнатная квартира, 84 м2, 7 этаж, дом 7 этажей">
+                    <input type="text" value="<%=property.mainHeader%>" class="form-control" id="mainHeader" name="property[mainHeader]">
                 </div>
+
                 <label for="price" class="col-md-2 text-right col-form-label">Цена</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="price" name="price" placeholder="12 000 000">
+                    <input type="text" value="<%=property.price%>" class="form-control" id="price" name="property[price]">
                 </div>
+
                 <label for="description" class="col-md-2 text-right col-form-label">Подробное описание</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Подробное описание объекта">
+                    <input type="text" value="<%=property.description%>" class="form-control" id="description" name="property[description]">
                 </div>
+
+                
+
                 <label for="img1" class="col-md-2 text-right col-form-label">Главное фото</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img1" name="img1" placeholder="img1">
+                    <input type="text" value="<%=property.img1%>" class="form-control" id="img1" name="property[img1]">
                 </div>
                 <label for="img2" class="col-md-2 text-right col-form-label">Фото2</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img2" name="img2" placeholder="img2">
+                    <input type="text" value="<%=property.img2%>" class="form-control" id="img2" name="property[img2]">
                 </div>
                 <label for="img3" class="col-md-2 text-right col-form-label">Фото3</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img3" name="img3" placeholder="img3">
+                    <input type="text" value="<%=property.img3%>" class="form-control" id="img3" name="property[img3]">
                 </div>
                 <label for="img4" class="col-md-2 text-right col-form-label">Фото4</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img4" name="img4" placeholder="img4">
+                    <input type="text" value="<%=property.img4%>" class="form-control" id="img4" name="property[img4]">
                 </div>
                 <label for="img5" class="col-md-2 text-right col-form-label">Фото5</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img5" name="img5" placeholder="img5">
+                    <input type="text" value="<%=property.img5%>" class="form-control" id="img5" name="property[img5]">
+                </div>
+                <label for="img6" class="col-md-2 text-right col-form-label">Фото6</label>
+                <div class="col-md-4">
+                    <input type="text" value="<%=property.img6%>" class="form-control" id="img6" name="property[img6]">
+                </div>
+                <label for="img7" class="col-md-2 text-right col-form-label">Фото7</label>
+                <div class="col-md-4">
+                    <input type="text" value="<%=property.img7%>" class="form-control" id="img7" name="property[img7]">
                 </div>
             </div>
             <div class="form-group row">
                 
-                <label for="img6" class="col-md-2 text-right col-form-label">Фото6</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="img6" name="img6" placeholder="img6">
-                </div>
-                <label for="img7" class="col-md-2 text-right col-form-label">Фото7</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="img7" name="img7" placeholder="img7">
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="img8" class="col-md-2 text-right col-form-label">Фото8</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img8" name="img8" placeholder="img8">
+                    <input type="text" value="<%=property.img8%>" class="form-control" id="img8" name="property[img8]">
                 </div>
                 <label for="img9" class="col-md-2 text-right col-form-label">Фото9</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img9" name="img9" placeholder="img9">
+                    <input type="text" value="<%=property.img9%>" class="form-control" id="img9" name="property[img9]">
                 </div>
             </div>
             <div class="form-group row">
                 
                 <label for="img10" class="col-md-2 text-right col-form-label">Фото10</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img10" name="img10" placeholder="img10">
+                    <input type="text" value="<%=property.img10%>" class="form-control" id="img10" name="property[img10]">
                 </div>
-  <!---hidden element-->
+                <!---hidden element-->
                 <label for="img11" class="col-md-2 text-right col-form-label"></label>
                 <div class="col-md-4">
-                    <input hidden type="text" class="form-control disabled" id="img11" name="img11" placeholder="img11">
+                    <input hidden type="text" value="<%=property.img11%>" class="form-control" id="img11" name="property[img11]">
                 </div>
-                  <!---hidden element-->
+                 <!---hidden element-->
             </div>
                 <div class="form-group row">
                     <div class="col-lg-10 col-md-pull-10">
