@@ -55,6 +55,7 @@ body,
 /* navbar */
 #mainNavbar {
     height: 4rem;
+    z-index: 999;
 }
 
 .navbar-custom.scrolled,
