@@ -6,13 +6,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <!-- GoogleFonts -->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700&amp;subset=cyrillic" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700&amp;subset=cyrillic"
+            rel="stylesheet">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
             integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-            crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <!-- inner.css -->
         <link rel="stylesheet" href="/css/realtor.css">
         <link rel="stylesheet" href="/css/form.css">
@@ -32,7 +33,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-4">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
                     </li>
@@ -51,18 +52,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Новости</a>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/propertyAll/new">Добавить объект</a>
-                        <a class="dropdown-item disabled" href="#">Редактировать объект</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item disabled" href="#">Удалить объект</a>
+                            <% if(!currentUser){ %>
+                            <a class="nav-item dropdown-item" href="/login">Login</a>
+                            <div class="dropdown-divider"></div>
+                            <% } else { %>
+                            <a class="nav-item dropdown-item" href="/logout">Logout</a>
+
+                            <a class="nav-item dropdown-item" href="/register">Sing in</a>
+                            <a class="nav-item dropdown-item" href="/propertyAll/new">Добавить объект</a>
+                            <% } %>
                         </div>
                     </li>
 
 
+
+                </ul>
+                <ul class="navbar-nav ml-auto pr-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login as: _<%= currentUser.username  %></a>
+
+                    </li>
                 </ul>
             </div>
         </nav>

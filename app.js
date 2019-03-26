@@ -3,9 +3,12 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     methodOverride = require("method-override"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
     multer = require("multer"),
     path = require("path"),
     Property = require("./models/propertySchema"),
+    User = require("./models/user"),
     nodemailer = require('nodemailer')
 // cloudinary = require("cloudinary"),
 // cloudinaryStorage = require("multer-storage-cloudinary"),
@@ -15,15 +18,37 @@ var express = require("express"),
 
 
 
-mongoose.connect('mongodb://localhost/property', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/property', {
+    useNewUrlParser: true
+});
 app.set("view engine", "ejs");
 app.use(express.static("views"));
 app.use(express.static(__dirname + "/public")); //болле безопасный вариант указания пути
 // console.log(__dirname);
 app.use(methodOverride('_method'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json()); //может надо удалить
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
+//Passport Configuration
+app.use(require("express-session")({
+    secret: "This is a secret page example...",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//add middleware check Current User for every routes
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 
 app.get("/", function (req, res) {
@@ -34,10 +59,14 @@ app.get("/", function (req, res) {
 
 //Show Sell form
 app.get('/sell', (req, res, msg) => {
-    res.render('sell', { msg: 'Продать' });
+    res.render('sell', {
+        msg: 'Продать'
+    });
 });
 app.get('/buy', (req, res, msg) => {
-    res.render('sell', { msg: 'Купить' });
+    res.render('sell', {
+        msg: 'Купить'
+    });
 });
 //send mail
 app.post('/sell', (req, res) => {
@@ -62,7 +91,7 @@ app.post('/sell', (req, res) => {
         secure: true, // true for 465, false for other ports
         auth: {
             user: 'eduardbut67@yandex.ru', // generated ethereal user
-            pass: 'koker12345'  // generated ethereal password
+            pass: 'koker12345' // generated ethereal password
         },
         tls: {
             rejectUnauthorized: false
@@ -105,7 +134,9 @@ app.get("/propertyAll", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("propertyAll", { property: allProperty });
+            res.render("propertyAll", {
+                property: allProperty
+            });
         }
 
     });
@@ -172,7 +203,7 @@ app.post("/propertyAll", function (req, res) {
 });
 
 // NEW - show form to create new property
-app.get("/propertyAll/new", function (req, res) {
+app.get("/propertyAll/new", isLoggedIn, function (req, res) {
     res.render("new");
 });
 
@@ -184,7 +215,9 @@ app.get("/propertyAll/:id", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("property", { property: foundProperty });
+            res.render("property", {
+                property: foundProperty
+            });
         }
     });
 });
@@ -197,7 +230,9 @@ app.get("/propertyAll/:id/edit", function (req, res) {
             console.log(err);
             res.redirect("/propertyAll");
         } else {
-            res.render("edit", { property: foundProperty });
+            res.render("edit", {
+                property: foundProperty
+            });
         }
     });
 });
@@ -273,7 +308,9 @@ function checkFileType(file, cb) {
 //Add POST route fore Image uploads
 app.post('/upload', (req, res) => {
     upload(req, res, (err) => {
-        let filenames = req.files.map(({ filename }) => filename);
+        let filenames = req.files.map(({
+            filename
+        }) => filename);
         console.log(filenames);
         // console.log(req.files.map(({ filename }) => filename));
         if (err) {
@@ -286,7 +323,9 @@ app.post('/upload', (req, res) => {
                     msg: 'Error: No File Selected'
                 });
             } else {
-                res.render('new', { filenames: filenames });
+                res.render('new', {
+                    filenames: filenames
+                });
                 // res.render('new', {
                 //     msg: 'File Uploaded',
                 //     files: `uploads/${filenames}`
@@ -304,8 +343,51 @@ app.post('/upload', (req, res) => {
     });
 });
 
+//========================
+// Auth Routhes
+//========================
 
+//Show register form
+app.get("/register", function (req, res) {
+    res.render("register");
+});
+//handle sign up logic
+app.post("/register", function (req, res) {
+    var newUser = new User({
+        username: req.body.username
+    });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register")
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/propertyAll/new");
+        });
+    });
+});
+//Show login Form
+app.get("/login", function (req, res) {
+    res.render("login");
+});
+//handling login logic
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/propertyAll",
+    failureRedirect: "/login"
+}), function (req, res) {});
+//log out route
+app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/propertyAll");
+});
 
+//Add middleware function to check if user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
 
 
 const port = 3000;

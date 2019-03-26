@@ -211,24 +211,18 @@
         <!-- Bottons Edit Delete New -->
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="row text-right mt-2">
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large" href="/propertyAll/new">Добавить
-                                объект
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large"
-                                href="/propertyAll/<%= property._id %>/edit">Редактировать
-                                объект
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-outline-secondary btn-large" href="/propertyAll/new">Удалить
-                                объект
-                            </a>
-                        </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <% if(currentUser){ %>
+                        <a class="btn btn-outline-success btn-sm" href="/propertyAll/new">New </a>
+                        <a class="btn btn-outline-warning btn-sm" href="/propertyAll/<%= property._id %>/edit">Edit
+                        </a>
+                        <form id="delete-form" action="/propertyAll/<%= property._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            <% }else{ %>
+                            <% } %>
+                        </form>
                     </div>
                 </div>
             </div>
