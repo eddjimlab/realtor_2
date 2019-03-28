@@ -27,6 +27,16 @@
     font-size: 0.8rem;
 }
 
+.dropdown-menu.show {
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+.navbar-nav .nav-link {
+    padding-left: 1rem;
+}
+
+
 
 body,
 .link_a_color a {
@@ -218,6 +228,10 @@ h2 {
         font-size: 0.7rem;
         letter-spacing: 0.1rem;
         word-spacing: 0.1rem;
+    }
+
+    .tableProperty tr {
+        font-size: .8rem;
     }
 }
 

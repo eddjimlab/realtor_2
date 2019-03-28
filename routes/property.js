@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var Property = require("../models/propertySchema");
+var Property = require("../models/propertySchema"),
+    middleware = require("../middleware")
 
 // Property - show all properties
 router.get("/propertyAll", function (req, res) {
@@ -73,7 +74,7 @@ router.post("/propertyAll", function (req, res) {
 });
 
 // NEW - show form to create new property
-router.get("/propertyAll/new", isLoggedIn, function (req, res) {
+router.get("/propertyAll/new", middleware.isLoggedIn, function (req, res) {
     res.render("new");
 });
 
@@ -127,12 +128,5 @@ router.delete("/propertyAll/:id", function (req, res) {
         }
     });
 });
-// Add middleware function to check if user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;

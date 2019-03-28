@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var middleware = require("../middleware");
 
 //root route
 router.get("/", function (req, res) {
@@ -32,25 +33,21 @@ router.post("/register", function (req, res) {
 });
 //Show login Form
 router.get("/login", function (req, res) {
-    res.render("login");
+    res.render("login", {
+        "error": "Войдите со своим логином!"
+    });
 });
 //handling login logic
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/propertyAll",
     failureRedirect: "/login"
 }), function (req, res) {});
+
 //log out route
 router.get("/logout", function (req, res) {
     req.logout();
-    res.redirect("/propertyAll");
+    req.flash("success", "Вы вышли из системы!");
+    res.redirect("/");
 });
-
-// Add middleware function to check if user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;

@@ -20,6 +20,7 @@
     "body-parser": "^1.18.3",
     "cloudinary": "^1.13.2",
     "config": "^3.0.1",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.3",

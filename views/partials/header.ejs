@@ -24,7 +24,7 @@
     <body>
         <!-- navbar -->
         <nav id="mainNavbar" class="navbar navbar-custom navbar-expand-lg  bg-dark py-0 link_a_color">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="/img/my_home7.png" alt="logo">
 
             </a>
@@ -51,6 +51,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Новости</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto pr-2">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,23 +62,26 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <% if(!currentUser){ %>
                             <a class="nav-item dropdown-item" href="/login">Login</a>
-                            <div class="dropdown-divider"></div>
                             <% } else { %>
                             <a class="nav-item dropdown-item" href="/logout">Logout</a>
-
                             <a class="nav-item dropdown-item" href="/register">Sing in</a>
                             <a class="nav-item dropdown-item" href="/propertyAll/new">Добавить объект</a>
-
                         </div>
                     </li>
-                </ul>
-                <ul class="navbar-nav ml-auto pr-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login as: _<%= currentUser.username  %></a>
-
+                        <a class="nav-link" href="#">Login as: _ <em><%= currentUser.username  %></em></a>
                     </li>
-                    <% } %>
+                    <% } %>       
                 </ul>
             </div>
         </nav>
         <!-- navbar -->
+        <div class="container">
+            <% if(error && error.length > 0){ %>
+            <h4 class="text-warning"><%= error %></h4>
+             <% } %>
+            <% if(success && success.length > 0){ %>
+            <h4 class="text-warning"><%= success %></h4>
+             <% } %>
+        </div>
+       

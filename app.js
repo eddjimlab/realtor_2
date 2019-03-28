@@ -2,6 +2,7 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
+    flash = require("connect-flash"),
     methodOverride = require("method-override"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json()); //может надо удалить
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use(flash());
 
 //Passport Configuration
 app.use(require("express-session")({
@@ -49,6 +51,8 @@ passport.deserializeUser(User.deserializeUser());
 //add middleware check Current User for every routes
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
