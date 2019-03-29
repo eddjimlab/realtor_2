@@ -66,7 +66,7 @@ app.use(function (req, res, next) {
 //=========================================
 //Set storage Engine
 const storage = multer.diskStorage({
-    destination: './public/uploads',
+    destination: './public/uploads1',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() +
             path.extname(file.originalname));
@@ -82,7 +82,7 @@ const upload = multer({
     // fileFilter: function (req, file, cb) {
     //     checkFileType(file, cb);
     // }
-}).array('myImage', 6);
+}).array('photos', 6);
 
 
 //Check file Type
@@ -101,14 +101,18 @@ function checkFileType(file, cb) {
     }
 }
 
+//Upload - show
+app.get("/upload", function (req, res) {
+    res.render("upload");
+});
+
+
 //Add POST route fore Image uploads
 app.post('/upload', (req, res) => {
     upload(req, res, (err) => {
         let filenames = req.files.map(({
             filename
         }) => filename);
-        console.log(filenames);
-        // console.log(req.files.map(({ filename }) => filename));
         if (err) {
             res.render('new', {
                 msg: err
@@ -122,20 +126,8 @@ app.post('/upload', (req, res) => {
                 res.render('new', {
                     filenames: filenames
                 });
-                // res.render('new', {
-                //     msg: 'File Uploaded',
-                //     files: `uploads/${filenames}`
-                // });
-                // console.log(req.files);
-                // console.log(req.files.filename);
-                // console.log(this.filename);
-
             }
         }
-        console.log(filenames);
-
-
-
     });
 });
 //=======================
