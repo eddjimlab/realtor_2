@@ -9,9 +9,9 @@ var express = require("express"),
     multer = require("multer"),
     path = require("path"),
     // Property = require("./models/propertySchema"),
-    User = require("./models/user")
-// nodemailer = require('nodemailer')
-// cloudinary = require("cloudinary"),
+    User = require("./models/user"),
+    // nodemailer = require('nodemailer')
+    cloudinary = require("cloudinary")
 // cloudinaryStorage = require("multer-storage-cloudinary"),
 // fileUpload = require('express-fileupload')
 

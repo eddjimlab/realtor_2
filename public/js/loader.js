@@ -1,20 +1,23 @@
-// // ************************ Drag and drop ***************** //
+// // // ************************ Drag and drop ***************** //
 // let dropArea = document.getElementById("drop-area")
 
-//     // Prevent default drag behaviors
-//     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-//         dropArea.addEventListener(eventName, preventDefaults, false)
-//         document.body.addEventListener(eventName, preventDefaults, false)
-//     })
+// // Prevent default drag behaviors
+// ;
+// ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+//     dropArea.addEventListener(eventName, preventDefaults, false)
+//     document.body.addEventListener(eventName, preventDefaults, false)
+// })
 
-//     // Highlight drop area when item is dragged over it
-//     ;['dragenter', 'dragover'].forEach(eventName => {
-//         dropArea.addEventListener(eventName, highlight, false)
-//     })
+// // Highlight drop area when item is dragged over it
+// ;
+// ['dragenter', 'dragover'].forEach(eventName => {
+//     dropArea.addEventListener(eventName, highlight, false)
+// })
 
-//     ;['dragleave', 'drop'].forEach(eventName => {
-//         dropArea.addEventListener(eventName, unhighlight, false)
-//     })
+// ;
+// ['dragleave', 'drop'].forEach(eventName => {
+//     dropArea.addEventListener(eventName, unhighlight, false)
+// })
 
 // // Handle dropped files
 // dropArea.addEventListener('drop', handleDrop, false)
@@ -90,8 +93,7 @@
 //     xhr.addEventListener('readystatechange', function (e) {
 //         if (xhr.readyState == 4 && xhr.status == 200) {
 //             updateProgress(i, 100) // <- Add this
-//         }
-//         else if (xhr.readyState == 4 && xhr.status != 200) {
+//         } else if (xhr.readyState == 4 && xhr.status != 200) {
 //             // Error. Inform the user
 //         }
 //     })
@@ -100,6 +102,3 @@
 //     formData.append('file', file)
 //     xhr.send(formData)
 // }
-
-
-

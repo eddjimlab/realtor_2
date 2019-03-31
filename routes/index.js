@@ -3,6 +3,11 @@ var router = express.Router();
 var passport = require("passport");
 var middleware = require("../middleware");
 
+
+
+router.get("/blogAll", function (req, res) {
+    res.render("blogAll");
+});
 //root route
 router.get("/", function (req, res) {
     res.render("home");

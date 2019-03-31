@@ -2,12 +2,15 @@
 
 <div class="container">
     <div class="row">
-        <form action="/upload" action="POST" enctype="multipart/form-data">
-            <input type="file" name="photos" multiple />
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-            </div>
-        </form>
+        <div id="drop-area">
+  <form class="my-form" action="/upload" method="POST" enctype="multipart/form-data">
+    <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+    <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+    <label class="button" for="fileElem">Select some files</label>
+  </form>
+  <progress id="progress-bar" max=100 value=0></progress>
+  <div id="gallery" /></div>
+</div>
     </div>
 </div>
 
