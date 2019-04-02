@@ -17,7 +17,8 @@ var express = require("express"),
 
 var sellformRoutes = require("./routes/sellform"),
     indexRoutes = require("./routes/index"),
-    propertyRoutes = require("./routes/property")
+    propertyRoutes = require("./routes/property"),
+    blogRoutes = require("./routes/blog")
 
 
 
@@ -25,7 +26,8 @@ mongoose.connect('mongodb://localhost/property', {
     useNewUrlParser: true
 });
 app.set("view engine", "ejs");
-app.use(express.static("views"));
+// app.use(express.static("views"));
+app.set('views', path.join(__dirname, 'views/'));
 app.use(express.static(__dirname + "/public")); //болле безопасный вариант указания пути
 // console.log(__dirname);
 app.use(methodOverride('_method'));
@@ -139,6 +141,7 @@ app.post('/upload', (req, res) => {
 app.use(indexRoutes);
 app.use(propertyRoutes);
 app.use(sellformRoutes);
+app.use(blogRoutes);
 
 
 const port = 3000;

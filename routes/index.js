@@ -5,9 +5,7 @@ var middleware = require("../middleware");
 
 
 
-router.get("/blogAll", function (req, res) {
-    res.render("blogAll");
-});
+
 //root route
 router.get("/", function (req, res) {
     res.render("home");
@@ -16,6 +14,7 @@ router.get("/", function (req, res) {
 router.get("/about", function (req, res) {
     res.render("about");
 });
+
 //Authentification route
 //Show register form
 router.get("/register", function (req, res) {
