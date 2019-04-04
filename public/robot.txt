@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /node_modules/
+Disallow: */?s=
+Disallow: *sort=
+Crawl-Delay: 5
+
+User-agent: GoogleBot
+Disallow: /node_modules/
+Disallow: */?s=
+Disallow: *sort=
+
+
+User-agent: Yandex
+Disallow: /node_modules/
+Disallow: */?s=
+Disallow: *sort=
+
+#Sitemap: https://site.ru/sitemap.xml
+#Host: https://site.ru

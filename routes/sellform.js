@@ -4,16 +4,32 @@ var router = express.Router();
 
 // var User = require("../models/user");
 
+// Seo meta tags
+let sellSeo = {
+    title: 'Услуги рэлтора, посредника, продажа, покупка квартир, домов',
+    description: 'Услуги риэлтора спб, продажа, покупка квартир, комнат, домов, новости рынка недвижимости, ипотеки, материнского капитала, новостроек, застройщиков.',
+    keywords: 'недвижимость продажа, квартира, купить, посредник',
+    author: 'Бацев Эдуард'
+};
 //=======================================
 //Show Sell form
 router.get('/sell', (req, res, msg) => {
     res.render('sell', {
-        msg: 'Продать'
+        msg: 'Продать',
+        title: sellSeo.title,
+        description: sellSeo.description,
+        keywords: sellSeo.keywords,
+        author: 'Бацев Эдуард'
     });
 });
+
 router.get('/buy', (req, res, msg) => {
     res.render('sell', {
-        msg: 'Купить'
+        msg: 'Купить',
+        title: sellSeo.title,
+        description: sellSeo.description,
+        keywords: sellSeo.keywords,
+        author: 'Бацев Эдуард'
     });
 });
 //send mail
@@ -63,7 +79,7 @@ router.post('/sell', (req, res) => {
         }
         console.log('Message sent: %s', info.messageId);
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        res.render('modal');
+        res.render('modal', sellSeo);
     });
 });
 

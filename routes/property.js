@@ -3,6 +3,14 @@ var router = express.Router();
 var Property = require("../models/propertySchema"),
     middleware = require("../middleware")
 
+// Seo meta tags
+let propertySeo = {
+    title: 'Продажа, покупка недвижимости, квратир, комнат, домов',
+    description: 'Покупка, продажа квартир, комнат, новостроек, коммуналок, домов, участков. Описание объекта: площадь, количество комнат, этаж, тип дома, метро, адрес, цена.',
+    keywords: 'недвижимость продажа, квартира, купить, посредник',
+    author: 'Бацев Эдуард'
+};
+
 // Property - show all properties
 router.get("/propertyAll", function (req, res) {
     Property.find({}, function (err, allProperty) {
@@ -10,7 +18,11 @@ router.get("/propertyAll", function (req, res) {
             console.log(err);
         } else {
             res.render("propertyAll", {
-                property: allProperty
+                property: allProperty,
+                title: propertySeo.title,
+                description: propertySeo.description,
+                keywords: propertySeo.keywords,
+                author: 'Бацев Эдуард'
             });
         }
     });
@@ -68,14 +80,14 @@ router.post("/propertyAll", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/propertyAll");
+            res.redirect("/propertyAll", propertySeo);
         }
     });
 });
 
 // NEW - show form to create new property
 router.get("/propertyAll/new", middleware.isLoggedIn, function (req, res) {
-    res.render("new");
+    res.render("new", propertySeo);
 });
 
 // SHOW property
@@ -85,7 +97,11 @@ router.get("/propertyAll/:id", function (req, res) {
             console.log(err);
         } else {
             res.render("property", {
-                property: foundProperty
+                property: foundProperty,
+                title: propertySeo.title,
+                description: propertySeo.description,
+                keywords: propertySeo.keywords,
+                author: 'Бацев Эдуард'
             });
         }
     });
@@ -97,10 +113,14 @@ router.get("/propertyAll/:id/edit", function (req, res) {
     Property.findById(req.params.id, function (err, foundProperty) {
         if (err) {
             console.log(err);
-            res.redirect("/propertyAll");
+            res.redirect("/propertyAll", propertySeo);
         } else {
             res.render("edit", {
-                property: foundProperty
+                property: foundProperty,
+                title: propertySeo.title,
+                description: propertySeo.description,
+                keywords: propertySeo.keywords,
+                author: 'Бацев Эдуард'
             });
         }
     });
@@ -124,7 +144,7 @@ router.delete("/propertyAll/:id", function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/propertyAll");
+            res.redirect("/propertyAll", propertySeo);
         }
     });
 });

@@ -4,21 +4,33 @@ var passport = require("passport");
 var middleware = require("../middleware");
 
 
-
+// Seo meta tags
+let homeSeo = {
+    title: 'Продажа, покупка недвижимости, услуги риэлтора, посредника',
+    description: 'Услуги риэлтора спб, продажа, покупка квартир, комнат, домов, новости рынка недвижимости, ипотеки, материнского капитала, новостроек, застройщиков.',
+    keywords: 'недвижимость продажа, квартира, купить, посредник',
+    author: 'Бацев Эдуард'
+};
+let aboutSeo = {
+    title: 'Услуги риэлтора, посредника, обо мне',
+    description: 'Услуги риэлтора спб, продажа, покупка квартир, комнат, домов, новости рынка недвижимости, ипотеки, материнского капитала, новостроек, застройщиков.',
+    keywords: 'недвижимость продажа, квартира, купить, посредник',
+    author: 'Бацев Эдуард'
+};
 
 //root route
 router.get("/", function (req, res) {
-    res.render("home");
+    res.render("home", homeSeo);
 });
 //About route
 router.get("/about", function (req, res) {
-    res.render("about");
+    res.render("about", aboutSeo);
 });
 
 //Authentification route
 //Show register form
 router.get("/register", function (req, res) {
-    res.render("register");
+    res.render("register", aboutSeo);
 });
 //handle sign up logic
 router.post("/register", function (req, res) {
@@ -28,17 +40,21 @@ router.post("/register", function (req, res) {
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
-            return res.render("register")
+            return res.render("register", aboutSeo)
         }
         passport.authenticate("local")(req, res, function () {
-            res.redirect("/propertyAll/new");
+            res.redirect("/propertyAll/new", homeSeo);
         });
     });
 });
 //Show login Form
 router.get("/login", function (req, res) {
     res.render("login", {
-        "error": "Войдите со своим логином!"
+        "error": "Войдите со своим логином!",
+        title: homeSeo.title,
+        description: homeSeo.description,
+        keywords: homeSeo.keywords,
+        author: 'Бацев Эдуард'
     });
 });
 //handling login logic
