@@ -41,7 +41,14 @@ router.post("/register", function (req, res) {
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
-            return res.render("register", aboutSeo)
+            // req.flash("error", "Выберите другой логин!")
+            return res.render("register", {
+                error: "Этот логин занят!",
+                title: 'Услуги риэлтора, посредника, обо мне',
+                description: 'Услуги риэлтора спб, продажа, покупка квартир, комнат, домов, новости рынка недвижимости, ипотеки, материнского капитала, новостроек, застройщиков.',
+                keywords: 'недвижимость продажа, квартира, купить, посредник',
+                author: 'Бацев Эдуард'
+            })
         }
         passport.authenticate("local")(req, res, function () {
             res.redirect("/propertyAll/new", homeSeo);

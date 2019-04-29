@@ -5,19 +5,15 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="contentSecond">
-          <h2 class="textDarkH">
+          <h1 class="textDarkH">
             Новости <span class="headBlue"> в мире недвижимости ...</span>
-          </h2>
+          </h1>
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 col-xs-4">
               <p class="">
-                События на вторичном рынке недвижимости, новостройки, падение или рост цен.
-              </p>
-              <p class="">
-                Изменения ипотечных условий и ставок,
-                получение субсидий и использование материнского капитала, регистрация собственности и оценка
-                недвижимости.
+                Факты, события, истории из жизни и просто мысли.
+
               </p>
             </div>
             <div class="col-md-1"></div>
@@ -31,46 +27,39 @@
 
   <main role="main" class="container">
     <div class="row">
+      <%blog.forEach(function(blog){ %>
       <div class="col-lg-8 col-10 pl-4 blog-main">
 
         <div class="blog-post">
-          <h2 class="blog-post-title">Sample blog post</h2>
-          <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+          <h2 class="blog-post-title"><%= blog.mainHeader %></h2>
 
-          <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic
-            typography, images, and code are all supported.</p>
-          <hr>
-          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus.
-            Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est
-            at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-          <blockquote>
-            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu
-              leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          </blockquote>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-            Aenean lacinia bibendum nulla sed consectetur.</p>
+          <p class="blog-post-meta"><%= blog.monthYear %> <a href="#"><%= blog.nameAuthor %></a></p>
+
+          <div><a href="/blog/blogAll/<%= blog._id %>">
+              <p><%= blog.content.substring(0,550) %>...</p>
+            </a></div>
+
           <p class="mb-0 font-italic blog-post-link">
-            <a href="/blog">Читать далее ... </a>
+            <a href="/blog/blogAll/<%= blog._id %>">Читать далее ... </a>
+
           </p>
+<!-- buttons -->
+          <div class="row AllPropLinks_buttons">
+            <% if(currentUser){ %>
+            <a class="btn btn-outline-success btn-sm" href="/blogAll/blogNew">New </a>
+            <a class="btn btn-outline-warning btn-sm" href="/blog/blogAll/<%= blog._id %>/blogEdit">Edit </a>
+            <form id="delete-form" action="/blog/blogAll/<%= blog._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-sm btn-outline-danger">Delete</button>
+              <% }else{ %>
+              <% } %>
+            </form>
+          </div> <!-- buttons -->
+          <hr>
+
+
 
         </div><!-- /.blog-post -->
-
-        <div class="blog-post">
-          <h2 class="blog-post-title">New feature</h2>
-          <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
-
-          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia
-            bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac
-            cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <ul>
-            <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-            <li>Donec id elit non mi porta gravida at eget metus.</li>
-            <li>Nulla vitae elit libero, a pharetra augue.</li>
-          </ul>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-            Aenean lacinia bibendum nulla sed consectetur.</p>
-          <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-        </div><!-- /.blog-post -->
+        <% }); %>
 
         <nav class="blog-pagination">
           <a class="btn btn-outline-primary" href="#">Older</a>
@@ -80,11 +69,7 @@
       </div><!-- /.blog-main -->
 
       <aside class="col-md-4 blog-sidebar">
-        <!-- <div class="p-4 mb-3 bg-light rounded">
-          <h4 class="font-italic">About</h4>
-          <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
-            amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        </div> -->
+
 
         <div class="p-4">
           <h4 class="font-italic">Архив</h4>

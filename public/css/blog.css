@@ -2,7 +2,7 @@
 
 
 .blog {
-    background: var(--back-colorGrey);
+    background: rgb(243, 248, 252);
     color: var(--font-colorBlack);
 }
 
@@ -37,7 +37,18 @@
 
 .blog-post-title {
     margin-bottom: .25rem;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.blog-img {
+    float: left;
+    max-width: 50%;
+    margin: .3rem .5rem .5rem 0;
+}
+
+.blog-post>p {
+    text-indent: 3%;
 }
 
 .blog-post-meta {
@@ -45,6 +56,14 @@
     color: #999;
 }
 
+/* new Blog */
+.header_text.form-control {
+    height: 3rem;
+}
+
+.content_text.form-control {
+    height: 30rem;
+}
 
 /* Footer */
 

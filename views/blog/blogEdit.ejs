@@ -2,46 +2,50 @@
 <div class="row">
     <div class="container">
         <h2>
-            Добавить новый пост
+            Изменить пост
         </h2>
-        <form action="/blogAll" method="POST">
+        <form action="/blog/blogAll/<%=blog.id_%>?_method=PUT" method="POST">
             <div class="form-group row">
                 <label for="mainHeader" class="col-md-2 text-right col-form-label">Заголовок</label>
                 <div class="col-md-10">
-                    <textarea type="text" class="header_text form-control" id="mainHeader" name="mainHeader" placeholder="Место для заголовка"></textarea>
+                    <input type="text" value="<%=blog.mainHeader%>" class="header_text form-control" id="mainHeader"
+                        name="blog[mainHeader]">
                 </div>
                 <label for="monthYear" class="col-md-2 text-right col-form-label">Месяц и год</label>
                 <div class="col-md-4">
-                    <input type="month" class="form-control" id="monthYear" name="monthYear" placeholder="май  2018">
+                    <input type="month" value="<%=blog.monthYear%>" class="form-control" id="monthYear"
+                        name="blog[monthYear]">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="nameAuthor" class="col-md-2 text-right col-form-label">Имя автора</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="nameAuthor" name="nameAuthor" placeholder="Елена">
+                    <input type="text" value="<%=blog.nameAuthor%>" class="form-control" id="blog[nameAuthor]"
+                        name="nameAuthor">
                 </div>
                 <label for="img1" class="col-md-2 text-right col-form-label">Фото</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="img1" name="img1" placeholder="../../public/imgBlog/1.jpg">
+                    <input type="text" value="<%=blog.img1%>" class="form-control" id="img1" name="blog[img1]">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="content" class="col-md-2 text-right col-form-label">Содержание</label>
                 <div class="col-md-10 content">
-                    <textarea type="text" class="content_text form-control" id="content" name="content" placeholder="Текст"></textarea>
+                    <textarea type="text" tabindex="10" class="content_text form-control" id="content"
+                        name="blog[content]"><%=blog.content%></textarea>
                 </div>
 
-                
- 
+
+
             </div>
-                <div class="form-group row">
-                    <div class="col-lg-10 col-md-pull-10">
-                    </div>
-                    <div class="col-lg-2 col-md-push-10">
-                        <input type="submit" value="Отправить" class="btn btn-outline-danger">
-                    </div>
+            <div class="form-group row">
+                <div class="col-lg-10 col-md-pull-10">
                 </div>
-            
+                <div class="col-lg-2 col-md-push-10">
+                    <input type="submit" value="Отправить" class="btn btn-outline-danger">
+                </div>
+            </div>
+
 
         </form>
 

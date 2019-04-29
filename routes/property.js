@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var Property = require("../models/propertySchema"),
+var express = require("express"),
+    router = express.Router(),
+    Property = require("../models/propertySchema"),
     middleware = require("../middleware")
 
 // Seo meta tags
